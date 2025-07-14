@@ -31,7 +31,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-.env*
+../../../Downloads/ai_mock_interviews-c4dfd1695bf85d06a48b31c3271f1c5db0e6bdc4/ai_mock_interviews-c4dfd1695bf85d06a48b31c3271f1c5db0e6bdc4/.env.local
 
 # vercel
 .vercel
