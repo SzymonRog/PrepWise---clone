@@ -59,16 +59,24 @@ const Agent = ({userName, userId, type} : AgentProps) => {
 
     const handleCall = async () => {
         setCallStatus(CallStatus.CONNECTING);
-        await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
-            variableValues: {
-                username: userName,
-                userid: userId,
-            },
-        })
+
+        console.log('connecting')
+        await vapi.start(
+            undefined,
+            undefined,
+            undefined,
+            process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!,
+            {
+                variableValues: {
+                    username: userName,
+                    userid: userId,
+                },
+            }
+        );
     }
-    const handleDisconect = async () => {
+    const handleDisconnect = async () => {
         setCallStatus(CallStatus.FINISHED);
-        await vapi.stop()
+        vapi.stop()
     }
 
     const latestMessage = messages[messages.length - 1]?.content;
@@ -111,7 +119,7 @@ const Agent = ({userName, userId, type} : AgentProps) => {
                         </span>
                     </button>
                 ) : (
-                    <button className="btn-disconnect" onClick={handleDisconect}>
+                    <button className="btn-disconnect" onClick={handleDisconnect}>
                         End
                     </button>
                 )}
