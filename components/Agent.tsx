@@ -1,3 +1,5 @@
+"use client";
+
 import {useEffect, useState} from 'react'
 import Image from "next/image";
 import {cn} from "@/lib/utils";
@@ -52,9 +54,7 @@ const Agent = ({userName, userId, type} : AgentProps) => {
         }
     }, []);
     useEffect(() => {
-        if(callStatus === CallStatus.FINISHED){
-            router.push('/')
-        }
+        if(callStatus === CallStatus.FINISHED) router.push('/');
     }, [messages, callStatus, type,userId]);
 
     const handleCall = async () => {
